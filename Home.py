@@ -1,4 +1,5 @@
 import streamlit as st 
+from utils.ui import apply_common_css
 
 st.set_page_config(
     page_title="Cognexa",
@@ -8,91 +9,16 @@ st.set_page_config(
 
 )
 
+apply_common_css()
+
 st.markdown("""
 <style>
-.stApp {
-    background-color: #FFF5EE;
-}
-h1, h2, h3, p {
-    color:black !important;
-    }
-
-header[data-testid="stHeader"]{
-    background: transparent !important;
-}
-
-span[data-testid="stIconMaterial"] {
-    color: black !important;
-}
-/* Hide Deploy button */
-[data-testid="stAppDeployButton"] {
-    display: none !important;
-}
-[data-testid="stMainMenu"] {
-    display: none !important;
-}
-
-div[data-testid="stToolbar"] {
-    right: -2rem;
-    margin-top: 6.5rem;
-}
-
 
 /* columns background */
 div[data-testid="stAlert"] *{
     background-color: white;
     color: black !important;
-    border-radius: 13px;
-
-    
-}
-
-
-/* Sidebar background */
-section[data-testid="stSidebar"] {
-    background-color: white;
-    border-radius: 20px;
-    
-}
-
-/* Sidebar text */
-section[data-testid="stSidebar"] *{
-    color: black;
-    border-radius: 20px
-}
-section[data-testid="stSidebar"] ul li a {
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    padding: 12px 16px !important;
-
-}
-div[data-testid="stSidebarNavLinkContainer"] :hover{
-    background-color:#E3F2FD;
-}
-
-div[data-testid="stExpander"] {
-    background-color:transparent !important;
-    
-}
-div[data-testid="stExpander"] summary{
-    background-color:transparent !important;
-    border:2px solid #ddd;
-
-}
-div[data-testid="stExpander"] *{
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    padding: 1px 16px !important;
-
-}
-div[data-testid="stAlertContainer"] p{
-        font-size: 15px !important;
-        font-weight: 400 !important;
-         width:100%;
-        background:white;
-        border-radius:12px;
-        padding:20px;
-
+    border-radius: 13px;   
 }
 
 /* arrow container*/
@@ -102,11 +28,23 @@ div[data-testid="stElementContainer"] p{
     border: 1px solid #d9d9d9;
     border-radius: 12px;
     margin-top: 10px;
-    width: 100%;
-    box-sizing: border-box;
+    padding:15px;
+    
 }
-span[data-testid="stIconEmoji] {
+span[data-testid="stIconEmoji"] {
     margin-top: 100rem;
+}
+div[data-testid="stPageLink"] p{
+    color:#18a4d6 !important;
+    padding:3px;
+    border: 1px solid #88c8df !important;
+    text-align:bold;
+    font-style: italic
+
+}
+div[data-testid="stPageLink"] :hover{
+    color: black !important;
+    
 }
 """, unsafe_allow_html=True
 )
@@ -129,7 +67,7 @@ with st.expander("✏️Answer Improvement", expanded=False):
             """)
         st.page_link(
             "pages/Answer_Improvement.py",
-            label="✏️"
+            label=" OPEN "
         )
 
     
@@ -139,7 +77,10 @@ with st.expander("💡Concept Explainer",expanded=False):
         st.write("""
         The *Concept Explainer* feature uses AI to simplify complex topics and explain them in a clear, structured, and easy-to-understand manner. It adapts explanations to the user's level of understanding and can provide examples, key points, and step-by-step explanations to support effective learning.
         """)
-
+        st.page_link(
+            "pages/Concept_Explainer.py",
+            label=" OPEN "
+        )
 
 
 
@@ -148,7 +89,10 @@ with st.expander("📝Notes Summarizer",expanded=False):
         st.write("""
         The *Notes Summarizer* feature uses AI to analyze lengthy study materials and generate concise, well-structured summaries. It extracts important concepts, key points, definitions, and essential information, helping users save time and revise their study material more efficiently.
         """)
-            
+        st.page_link(
+            "pages/Notes_SummarizerS.py",
+            label=" OPEN "
+        )            
       
 
 with st.expander("🧠 Quiz Generator",expanded=False):
@@ -156,6 +100,7 @@ with st.expander("🧠 Quiz Generator",expanded=False):
         st.write("""
             The *Quiz Generator* feature uses AI to automatically create quizzes from provided study material. It generates relevant questions based on the content and can include multiple-choice questions, answers, and explanations to help users test their knowledge and identify areas for improvement.
             """)
-
-pages = [
-    st.Page("Home.py", title="Home", icon=":material/home:")]
+        st.page_link(
+            "pages/Quiz_Generator.py",
+            label=" OPEN "
+        )

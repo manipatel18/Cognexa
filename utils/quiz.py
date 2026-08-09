@@ -1,19 +1,15 @@
 import os
+import json
 import streamlit as st
 from google import genai
 from dotenv import load_dotenv
-import json
+from utils.gemini_client import getclient
+
 
 load_dotenv()
 
+client = getclient()
 
-@st.cache_resource
-def loading():
-    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-
-client = loading()
-
-@st.cache_data(show_spinner=False)
 def generateQuiz(notes,level):
     prompt = f"""
 
@@ -21,6 +17,17 @@ def generateQuiz(notes,level):
             you are an AI quiz generator.
 
             Generate 5 multiple - choice questions from the notes below.
+
+            Difficulty / Level:
+            {level}
+
+            Requirements:
+            - Questions must be based only on the provided notes.
+            - Each question must have exactly 4 options.
+            - Include the correct answer.
+            - Return ONLY valid JSON.
+            - Do not include markdown.
+            - Do not include ```json.
 
             Return ONLY valid JSON.
 

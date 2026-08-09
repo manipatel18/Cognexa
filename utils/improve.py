@@ -2,23 +2,27 @@ import os
 import streamlit as st
 from google import genai
 from dotenv import load_dotenv
+from utils.gemini_client import getclient
+
 
 load_dotenv()
 
 
-@st.cache_resource
-def get_client():
-    return genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+client = getclient()
 
-client = get_client()
-
-@st.cache_data(show_spinner=False)
 def answer_improvement(notes,level):
     prompt = f"""
     You are Cognexa, an AI-powered academic learning assistant.
 
     answer improvement: {level}
 
+   Requirements:
+    Improve grammar.
+    Improve clarity.
+    Improve structure.
+    Keep the original meaning.
+    Do not add unrelated information.
+    Make the answer suitable for academic use.
 
     Student notes:
     {notes}
