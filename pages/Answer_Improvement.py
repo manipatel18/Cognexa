@@ -1,14 +1,12 @@
 import streamlit as st 
-from utils.llm import summarize_notes
+from utils.improve import answer_improvement
 
 st.set_page_config(
-    page_title="Notes Summarizer",
-    page_icon="📄"
+    page_title="Answer Improvement",
+    page_icon="✏️"
 
 
 )
-
-
 
 st.markdown("""
 <style>
@@ -99,11 +97,10 @@ div[data-testid="stExpander"] *{
 div[data-testid="stAlertContainer"] p{
         font-size: 20px !important;
         font-weight: 400 !important;
-         width:100%;
+        width:100%;
         border-radius:12px;
-        padding:20p;
+        padding:20px;
 }
-
 
 /* output level */
 div[role="group"]:has(input[aria-label="Output Tone / Level"]) {
@@ -111,6 +108,7 @@ div[role="group"]:has(input[aria-label="Output Tone / Level"]) {
     border: 1px solid #ff6b6b !important;
     border-radius: 25px !important;
     overflow: hidden !important;
+
 }
 /* Each option */
 div[role="option"] {
@@ -137,9 +135,9 @@ div.stButton > button:hover{
 )
 
 
-st.title("📝 Notes Summarizers")
+st.title("✏️ Answer Improvement")
 
-st.markdown("*Paste your notes below and lets AI generate a concise summary.*")
+st.markdown("*Paste your notes below and lets AI Enhancement .*")
 
 level = st.sidebar.selectbox(
     "Output Tone / Level",
@@ -156,28 +154,34 @@ notes = st.text_area(
     height= 250,
     placeholder="paste your notes here...")
 
+
+
+
 # bottom
-if st.button(" Summarize Notes", use_container_width=True):
+
+if st.button(" Enhance ", use_container_width=True):
 
     # validation
     if notes.strip()=="":
-        st.warning("⚠️ Please enter notes before clicking Summarize Notes button.")
+        st.warning("⚠️ Please enter notes before clicking Enhance Notes button.")
 
     else:
         with st.spinner("Generating summary...."):
 
             try:
-                summary = summarize_notes(notes, level)
+                summary = answer_improvement(notes, level)
 
-                st.success(" ✅ Summary Generated Successfully!")
-                st.subheader("📋 summary")
+                st.success(" ✅ Notes Enhanced Successfully!")
+                st.header("✨ Answer")
                 st.info(summary)
+                
 
             except Exception as e:
                 st.error(e)
 
 
-
-
-
-
+    st.Page(
+        "pages/Answer_Improvement.py",
+        title="Answer Improvement",
+        icon="✏️"
+    )

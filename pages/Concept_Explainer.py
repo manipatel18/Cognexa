@@ -1,13 +1,10 @@
 import streamlit as st 
-from utils.llm import summarize_notes
+from utils.explainer import generateConcept
 
 st.set_page_config(
-    page_title="Notes Summarizer",
-    page_icon="📄"
-
-
+    page_title="Concept Explainer",
+    page_icon="💡"
 )
-
 
 
 st.markdown("""
@@ -97,11 +94,11 @@ div[data-testid="stExpander"] *{
 
 }
 div[data-testid="stAlertContainer"] p{
-        font-size: 20px !important;
+        font-size: 15px !important;
         font-weight: 400 !important;
-         width:100%;
+        width:100%;
         border-radius:12px;
-        padding:20p;
+        padding:20px;
 }
 
 
@@ -137,9 +134,9 @@ div.stButton > button:hover{
 )
 
 
-st.title("📝 Notes Summarizers")
+st.title("💡 Concept Explainer")
 
-st.markdown("*Paste your notes below and lets AI generate a concise summary.*")
+st.markdown(" *Paste your notes below and lets AI Explains .*")
 
 level = st.sidebar.selectbox(
     "Output Tone / Level",
@@ -149,35 +146,33 @@ level = st.sidebar.selectbox(
     index=1,
     key="output_level"
 )
-
 # text or paste here
 notes = st.text_area(
     " ",
     height= 250,
     placeholder="paste your notes here...")
 
-# bottom
-if st.button(" Summarize Notes", use_container_width=True):
+# generate bottom
+if st.button(" Explain ", use_container_width=True):
 
     # validation
     if notes.strip()=="":
-        st.warning("⚠️ Please enter notes before clicking Summarize Notes button.")
+        st.warning("⚠️ Please enter notes before clicking Explain Notes button.")
 
     else:
         with st.spinner("Generating summary...."):
 
             try:
-                summary = summarize_notes(notes, level)
+                summary = generateConcept(notes, level)
 
-                st.success(" ✅ Summary Generated Successfully!")
-                st.subheader("📋 summary")
+                st.success(" ✅ Concept explained Successfully!")
+                st.subheader("💡Explaination")
                 st.info(summary)
 
             except Exception as e:
                 st.error(e)
-
-
-
-
-
-
+    st.Page(
+        "pages/Answer_Improvement.py",
+        title="Answer Improvement",
+        icon=":material/edit:"
+    )
