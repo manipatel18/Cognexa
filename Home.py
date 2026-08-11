@@ -71,7 +71,6 @@ with st.expander("✏️Answer Improvement", expanded=False):
         )
 
     
-
 with st.expander("💡Concept Explainer",expanded=False):
     with st.container(border=True):
         st.write("""
@@ -90,7 +89,7 @@ with st.expander("📝Notes Summarizer",expanded=False):
         The *Notes Summarizer* feature uses AI to analyze lengthy study materials and generate concise, well-structured summaries. It extracts important concepts, key points, definitions, and essential information, helping users save time and revise their study material more efficiently.
         """)
         st.page_link(
-            "pages/Notes_SummarizerS.py",
+            "pages/Notes_Summarizer.py",
             label=" OPEN "
         )            
       
