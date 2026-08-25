@@ -1,9 +1,9 @@
 import streamlit as st 
-from utils.ui import apply_common_css
+from utils.ui import apply_common_css,show_loader
 
 st.set_page_config(
     page_title="Cognexa",
-    page_icon="1",
+    page_icon="🧑‍💻",
     layout="wide",
     initial_sidebar_state="expanded"
 

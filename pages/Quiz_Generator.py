@@ -29,7 +29,9 @@ div[data-testid="stFormSubmitButton"] :hover{
 
 
 st.title("🧠 Quiz Generator")
-st.write("*Quiz generate by Ai* ")
+st.markdown("*Paste your notes below and lets AI generate a Quiz.* ")
+
+
 
 
 level = st.sidebar.selectbox(

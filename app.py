@@ -1,13 +1,28 @@
 import streamlit as st
+from utils.ui import apply_common_css,show_loader
+from utils.gemini_client import getclient
+import time
 
 st.set_page_config(
     page_title="Cognexa",
-    page_icon="🧠",
+    page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 
+apply_common_css()
+
+
+# Show loading screen
+loader = show_loader("Preparing Cognexa...")
+
+
+# Remove loading screen
+loader.empty()
+
+
+# Now show actual application
 home = st.Page(
     "Home.py",
     title="Home",
