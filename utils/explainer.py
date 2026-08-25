@@ -5,10 +5,11 @@ from dotenv import load_dotenv
 from utils.gemini_client import getclient
 
 
+
 load_dotenv()
 
-
 client = getclient()
+
 
 def generateConcept(notes,level):
     prompt = f"""
@@ -30,7 +31,7 @@ def generateConcept(notes,level):
     - Do not change the meaning of the original content.
     """
 
+    response = client.models.generate_content(model="gemini-3.5-flash-lite",contents= prompt)
 
-    response = client.models.generate_content(model="gemini-flash-latest",contents= prompt)
     return response.text
 

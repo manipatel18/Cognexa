@@ -40,11 +40,10 @@ if st.button(" Enhance ", use_container_width=True):
         with st.spinner("Improving answer...."):
 
             try:
-                Improved = answer_improvement(notes, level)
+                improved = answer_improvement(notes, level)
 
                 st.session_state["Improved_answer"] = improved
 
-                st.success(" ✅ Notes Enhanced Successfully!")
                
         
             except Exception as e:
@@ -55,5 +54,5 @@ if "Improved_answer" in st.session_state:
     st.subheader("✨ Improved Answer")
 
     st.info(
-        st.session_state["Improved"]
+        st.session_state["Improved_answer"] 
     )

@@ -44,7 +44,6 @@ if st.button(" Explain ", use_container_width=True):
 
                 st.session_state["concept_explanation"] = explanation
 
-                st.success(" ✅ Concept explained Successfully!")
 
 
             except Exception as e:

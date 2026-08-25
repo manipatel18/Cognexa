@@ -46,7 +46,6 @@ if st.button(" Summarize Notes", use_container_width=True):
                     "notes_summary"
                 ] = summary
 
-                st.success(" ✅ Summary Generated Successfully!")
 
 
             except Exception as e:

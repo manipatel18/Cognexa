@@ -58,7 +58,7 @@ General Guidelines:
 Student Notes:
 {notes}
 """
-    response = client.models.generate_content(model="gemini-flash-latest",contents=f"Summarize these notes:\n\n{notes}")
+    response = client.models.generate_content(model="gemini-3.6-flash",contents=f"Summarize these notes:\n\n{notes}")
 
     return response.text             
 
